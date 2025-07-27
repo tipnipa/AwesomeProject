@@ -49,6 +49,11 @@ export default function FlexboxMenu() {
       <Link href="/review" style={styles.link}>
         <Text style={styles.linkText}>review</Text>
       </Link>
+      <Link href="/health" style={styles.link}>
+      <Text style={styles.linkText}>Health</Text>
+      </Link>
+      
+
 
 
 
