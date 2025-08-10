@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from "react-native";
 
 export default function FlexboxMenu() {
   return (
+        
+
     <View style={styles.container}>
       <Link href="/flexbox/ex01" style={styles.link}>
         <Text style={styles.linkText}>1</Text>
@@ -50,18 +52,27 @@ export default function FlexboxMenu() {
         <Text style={styles.linkText}>review</Text>
       </Link>
       <Link href="/health" style={styles.link}>
-      <Text style={styles.linkText}>Health</Text>
+        <Text style={styles.linkText}>Health</Text>
       </Link>
+
       <Link href="/home" style={styles.link}>
-      <Text style={styles.linkText}>Home</Text>
+        <Text style={styles.linkText}>Home</Text>
       </Link>
 
-      
+      <Link href="/chart" style={styles.link}>
+        <Text style={styles.linkText}>Chart</Text>
+      </Link>
 
-
-
+      <Link href="/your-health" style={styles.link}>
+        <Text style={styles.linkText}>your-health</Text>
+      </Link>
+      <Link href="/todolist" style={styles.link}>
+          <Text style={styles.linkText}>TodoList</Text>
+        </Link>
 
     </View>
+    
+
   );
 }
 

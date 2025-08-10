@@ -1,6 +1,8 @@
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import { Image, Text, View, } from 'react-native';
+
+
 export default function Hotel() {
     return (
         <View style={{ padding : 20  }}>

@@ -14,7 +14,8 @@ export default function TourFlatList(props:any) {
         try {
             let promise = await fetch('https://raw.githubusercontent.com/arc6828/myreactnative/master/assets/json/trips.json');
             let data = await promise.json();
-            
+            // console.log("Load Data : ", data);
+            //SET STATE
             setOnlineTours(data);
         } catch (error) {
             console.log("ERROR : ", error);
@@ -31,8 +32,7 @@ export default function TourFlatList(props:any) {
             <Text style={{ fontSize: 20 }}>Tour with FlatList</Text>
             <Text style={{ color: 'gray', marginVertical: 5 }}>Let find out what most interesting things</Text>
             <FlatList
-                horizontal={true}
-                
+                horizontal={true}           
                 data={onlineTours}
                 renderItem={
                     ({ item, index }:any) => {

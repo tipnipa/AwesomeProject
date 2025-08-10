@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, FlatList, Image, Text, View } from "react-native";
+import { Dimensions, FlatList, Image, StyleSheet, Text, View } from "react-native";
 
 export default function Event(props:any) {
 
@@ -7,9 +7,7 @@ export default function Event(props:any) {
     const loadOnlineTours = async () => {
         try {
             let promise = await fetch('https://raw.githubusercontent.com/arc6828/myreactnative/master/assets/json/events.json');
-            let data = await promise.json();
-            // console.log("Load Data : ", data);
-            //SET STATE
+            let data = await promise.json();           
             setOnlineTours(data);
         } catch (error) {
             console.log("ERROR : ", error);
@@ -26,19 +24,14 @@ export default function Event(props:any) {
             <Text style={{ fontSize: 20 }}>Upcoming Events</Text>
             <Text style={{ color: 'gray', marginVertical: 5 }}>What's the Worst that could Happend</Text>
             <FlatList
-                horizontal={true}
-                // horizontal={false}
-                // numColumns={2}
-                // columnWrapperStyle={{ justifyContent: 'space-between' }}
-                // data={tours}
+                horizontal={true}             
                 data={onlineTours}
                 renderItem={
-                    ({ item, index }:any) => {
-                        // console.log(item);
+                    ({ item, index }:any) => {                      
                         return (
                             <View style={{ marginRight: 10 }} >
-                                <Image style={{ width: Dimensions.get("screen").width / 1.5, height: 150, borderTopLeftRadius : 10, borderTopRightRadius : 10 }} source={{ uri: item.uri }} />
-                                <View style={{ width: Dimensions.get("screen").width / 1.5,flexDirection : "row", backgroundColor : 'white', borderWidth : 1 , borderColor : "grey" , borderBottomLeftRadius : 10 , borderBottomRightRadius : 10}}>
+                                <Image style={ styles.picture } source={{ uri: item.uri }} />
+                                <View style={{ width: Dimensions.get("screen").width / 1.6,flexDirection : "row", backgroundColor : 'white', borderWidth : 1 , borderColor : "grey" , borderBottomLeftRadius : 10 , borderBottomRightRadius : 10}}>
                                     <View style={{ padding : 10  }} >
                                         <Text style={{ fontSize: 15, color: 'red', textAlign : "center" }}>{item.month}</Text>
                                         <Text style={{ fontSize: 15, color: 'gray',  textAlign : "center" }}>{item.date}</Text>
@@ -50,7 +43,7 @@ export default function Event(props:any) {
                                     </View>
                                 </View>
                             </View>
-                            // <TourItem item={item} index={index} />
+                           
                         );
                     }
                 }
@@ -59,3 +52,15 @@ export default function Event(props:any) {
         </View>
     );
 }
+
+
+
+const styles = StyleSheet.create({
+  
+    picture: {
+        width: Dimensions.get("screen").width / 1.6, 
+        height: 150, 
+        borderTopLeftRadius : 10, 
+        borderTopRightRadius : 10 
+    },     
+});

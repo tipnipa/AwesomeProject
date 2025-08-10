@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 
 export default function Section2() {
     return (
-        <View style={{ flex: 1, marginTop: -35, alignItems: "center" }}>
+        <View style={{ flex: 1, marginTop: -25, alignItems: "center" }}>
             {/* Card Container */}
             <View style={{
                 backgroundColor: "#ffffff",

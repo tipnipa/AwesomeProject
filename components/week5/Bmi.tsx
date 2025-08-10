@@ -1,3 +1,4 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
@@ -22,7 +23,7 @@ export default function Bmi() {
 
   const getBMICategory = (bmi: number) => {
     
-    if (bmi <= 18.4 ) return 'Underweight';
+    if (bmi <= 18.4 ) return 'ผอมมาก';
     if (bmi >= 18.5 && bmi <=24.99) return 'Normal';
     if (bmi >= 25 && bmi <=29.99) return 'Overweight';
     if (bmi >= 30.00 && bmi <=34.99) return 'Obese';
@@ -58,7 +59,7 @@ export default function Bmi() {
       </View>
 
       {/* Result */}
-      <View style={{ flexDirection: "row", marginVertical: 20, }}>
+      <View style={{ flexDirection: "row", marginVertical: 20 }}>
         <View style={styles.resultBox}>
           <Text style={{ fontSize: 20 }}>{bmi || '--'}</Text>
         </View>
@@ -67,14 +68,17 @@ export default function Bmi() {
         </View>
       </View>
 
-      {/* Button */}
-      <TouchableOpacity onPress={onPressButton}>
-    <View style={{ padding: 20, backgroundColor: "blue", borderRadius: 40 }}>
-        <Text style={{ fontSize: 20, textAlign: "center", color: 'white' }}>
-            Calculate
-        </Text>
-    </View>
-</TouchableOpacity>
+      {/* Button ใส่สีปุ่มแบบ linearGradient */}      
+      <TouchableOpacity onPress={onPressButton} style={styles.buttonContainer}>
+      <LinearGradient
+        colors={["#4c669f", "#3b5998", "#192f6a"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.gradient}
+      >
+        <Text style={styles.buttonText}>Calculate</Text>
+      </LinearGradient>
+    </TouchableOpacity>
 
     </ScrollView>
   );
@@ -85,7 +89,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   inputCard: {
-    backgroundColor: "white",
+    backgroundColor: "#88b8d6ff",
     padding: 20,
     marginVertical: 20,
     marginHorizontal: 10,
@@ -100,12 +104,26 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   resultBox: {
-    backgroundColor: "white",
+    backgroundColor: "#88b8d6ff",
     flex: 1,
     borderRadius: 10,
     margin: 10,
     height: 100,
     justifyContent: "center",
     alignItems: "center",
+  },
+  buttonContainer: {
+    borderRadius: 20,
+    overflow: "hidden", // เพื่อให้ gradient ถูกตัดตามขอบ
+  },
+  gradient: {
+    padding: 20,
+    borderRadius: 20,
+  },
+  buttonText: {
+    fontSize: 30,
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
   },
 });
